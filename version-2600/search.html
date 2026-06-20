@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://young-band-ba97.laodayizhi.workers.dev/ads-widget.js"></script>
+<title>搜索影视 - 必看电影</title>
+  <meta name="description" content="必看电影影视搜索，支持按片名、地区、年份、类型和标签查找高清影视内容。">
+  <meta name="keywords" content="国产影视剧全集免费看_高清电影在线-必看电影,国产,视频,免费,在线观看,高清,影视大全,影视搜索,电影搜索,剧集搜索">
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" href="./assets/base.css">
+  <link rel="stylesheet" href="./assets/site.css">
+</head>
+<body class="bg-slate-950 text-white">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white shadow-lg backdrop-blur-sm bg-opacity-95">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a class="flex items-center space-x-2 group" href="./index.html" aria-label="必看电影">
+          <span class="logo-mark"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"></path></svg></span>
+          <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">必看电影</span>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-6">
+          <a class="nav-link" href="./index.html">首页</a>
+          <a class="nav-link" href="./categories.html">影视分类</a>
+          <a class="nav-link" href="./ranking.html">热门排行</a>
+          <a class="nav-link" href="./search.html">搜索</a>
+          <a class="nav-link" href="./category-domestic-series.html">国产剧集</a>
+          <a class="nav-link" href="./category-domestic-movies.html">国产电影</a>
+          <a class="nav-link" href="./category-japan-korea.html">日韩精选</a>
+          <a class="nav-link" href="./category-euro-america.html">欧美影视</a>
+        </nav>
+        <form class="hidden md:flex items-center" action="./search.html" method="get">
+          <div class="relative search-box">
+            <input class="w-64 px-4 py-2 pl-10 rounded-full bg-white bg-opacity-10 border border-white border-opacity-20 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white placeholder-gray-300" type="search" name="q" placeholder="搜索影视作品..." autocomplete="off">
+            <span class="search-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></span>
+          </div>
+        </form>
+        <button class="menu-button lg:hidden" type="button" data-menu-toggle aria-label="打开菜单">☰</button>
+      </div>
+      <div class="mobile-panel hidden lg:hidden pb-4" data-mobile-menu>
+        <form class="mb-4" action="./search.html" method="get">
+          <div class="relative search-box">
+            <input class="w-full px-4 py-2 pl-10 rounded-full bg-white bg-opacity-10 border border-white border-opacity-20 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white placeholder-gray-300" type="search" name="q" placeholder="搜索影视作品..." autocomplete="off">
+            <span class="search-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></span>
+          </div>
+        </form>
+        <nav class="flex flex-col space-y-2">
+          <a class="mobile-link" href="./index.html">首页</a>
+          <a class="mobile-link" href="./categories.html">影视分类</a>
+          <a class="mobile-link" href="./ranking.html">热门排行</a>
+          <a class="mobile-link" href="./search.html">搜索</a>
+          <a class="mobile-link" href="./category-domestic-series.html">国产剧集</a>
+          <a class="mobile-link" href="./category-domestic-movies.html">国产电影</a>
+          <a class="mobile-link" href="./category-japan-korea.html">日韩精选</a>
+          <a class="mobile-link" href="./category-euro-america.html">欧美影视</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="flex-grow">
+    <section class="page-hero compact-hero search-hero">
+      <div class="container mx-auto px-4">
+        <div class="breadcrumb"><a href="./index.html">首页</a><span>/</span><b>搜索</b></div>
+        <h1>搜索影视作品</h1>
+        <p>输入片名、地区、年份、类型或标签，快速找到想看的影视内容。</p>
+        <form class="search-large" action="./search.html" method="get">
+          <input id="search-input" type="search" name="q" placeholder="搜索影视作品..." autocomplete="off">
+          <button type="submit">搜索</button>
+        </form>
+      </div>
+    </section>
+    <section class="container mx-auto px-4 py-12">
+      <div id="search-summary" class="search-summary"></div>
+      <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0001.html" data-filter-card data-search="棋魂 中国大陆 剧集 2020 青春/奇幻/励志 围棋 穿越 热血 友情 改编">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./1.jpg" alt="棋魂" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">国产剧集</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2020</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">棋魂</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">一个小学生在爷爷的旧棋盘里发现了一个千年棋手的魂魄,从此踏上了追逐“神之一手”的旅程。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国大陆 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0002.html" data-filter-card data-search="雪之少女 日本 电影 2024 爱情,奇幻,剧情 雪国 记忆 轮回">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./2.jpg" alt="雪之少女" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">雪之少女</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">每年初雪降临,一位老妇人都会在车站等待一个永远不会赴约的恋人,今年她等到了一个认识她、她却从未见过的孙女。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">日本 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0003.html" data-filter-card data-search="横空出世 中国大陆 电影 2024 剧情,历史 两弹一星 集体记忆 家国情怀 写实">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./3.jpg" alt="横空出世" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">国产电影</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">横空出世</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">1958年,一支神秘部队消失在地图上,他们将在死亡之海叩响中国第一颗原子弹。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国大陆 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0004.html" data-filter-card data-search="龙凤店国语 中国内地 电影 2012 古装喜剧 宫廷 市井 爱情 身份错位 搞笑">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./4.jpg" alt="龙凤店国语" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2012</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">龙凤店国语</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">逃婚的刁蛮公主与市井酒馆老板互换身份,在笑料百出的龙凤店中上演真假千金大乱斗。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国内地 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0005.html" data-filter-card data-search="大象菩提 印度,中国大陆 电影 2019 剧情,奇幻,冒险 佛教哲学 大象保护 转世传说">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./5.jpg" alt="大象菩提" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2019</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">大象菩提</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">一头老象在菩提树下跪拜死去,一个不信佛的商人发现自己上辈子是头象。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">印度,中国大陆 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0006.html" data-filter-card data-search="杀死我的老师 韩国 电影 2020 悬疑,惊悚 校园暴力 复仇 师生关系 反转">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./6.jpg" alt="杀死我的老师" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2020</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">杀死我的老师</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">优等生杀死暴力老师后自首,警方却发现老师三年前就已经死了,这个“老师”是一具被操控的尸体。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">韩国 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0007.html" data-filter-card data-search="妳好,安妮 中国台湾 剧集 2024 剧情/同性/家庭 百合 家庭 回忆 自我认同 年代">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./7.jpg" alt="妳好,安妮" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">国产剧集</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">妳好,安妮</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">35岁的安妮在整理母亲遗物时,发现了一箱写给“安妮”的信,寄信人是母亲从未提及的“另一个女人”。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国台湾 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0008.html" data-filter-card data-search="史上最糟糕的室友第二季 美国 剧集 2025 犯罪,惊悚,纪录片 真实改编 都市恐怖 合租惊魂 连环案">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./8.jpg" alt="史上最糟糕的室友第二季" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2025</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">史上最糟糕的室友第二季</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">当三个陌生人相继搬进同一个地址,他们不知道上一个租客都已在“意外”中消失。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">美国 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0009.html" data-filter-card data-search="献给检察官的玫瑰花 韩国 电视剧 2017 剧情/悬疑 律政 复仇 女性视角 真相 翻案">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./9.jpg" alt="献给检察官的玫瑰花" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2017</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">献给检察官的玫瑰花</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">一名蒙冤入狱25年的女囚出狱后,每周给当年起诉她的检察官寄一朵红玫瑰。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">韩国 · 电视剧</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0010.html" data-filter-card data-search="亲爱的仇敌 韩国 剧集 2025 剧情/爱情/复仇 罗生门 婚姻战争 反转">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./10.jpg" alt="亲爱的仇敌" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2025</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">亲爱的仇敌</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">离婚法庭上,夫妻双方各执一词,但法官发现他们的故事只有重叠处才是真相。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">韩国 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0011.html" data-filter-card data-search="河畔的朔子 日本 电影 2024 剧情/家庭 文艺 夏日 治愈 成长 细腻">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./11.jpg" alt="河畔的朔子" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">河畔的朔子</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">高考失利的少女回到乡下河畔,在蝉鸣与流水中,听到了关于家族被掩埋了几十年的秘密。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">日本 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0012.html" data-filter-card data-search="绝地战警:生死与共 美国 电影 2026 动作/喜剧/警匪 搭档 迈阿密 退休任务 最后一案">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./12.jpg" alt="绝地战警:生死与共" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">喜剧家庭</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2026</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">绝地战警:生死与共</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">退休前夜,迈阿密最不靠谱的两位警探被卷入一场涉及整个警局的阴谋,只有继续不靠谱才能活命。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">美国 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0013.html" data-filter-card data-search="死币 日本 剧集 2016 恐怖/悬疑 都市传说 诅咒 纸币 死亡连锁信">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./13.jpg" alt="死币" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2016</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">死币</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">网络上流传着收到“死币”七天内不花掉就会惨死的都市传说,一群大学生偏不信邪。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">日本 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0014.html" data-filter-card data-search="恋爱操控师 中国台湾 电影 2024 喜剧,爱情 心理操控 反转 PUA反杀 黑色幽默">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./14.jpg" alt="恋爱操控师" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">国产电影</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">恋爱操控师</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">顶尖恋爱操控师接了一单豪门的生意,却发现目标对象是一个对任何套路都自动免疫的古怪图书管理员。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国台湾 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0015.html" data-filter-card data-search="史酷比和吸血鬼传说 美国 电影 2024 动画,喜剧,悬疑 狗狗冒险 伪纪录片 搞笑 惊悚">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./15.jpg" alt="史酷比和吸血鬼传说" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">动画纪实</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">史酷比和吸血鬼传说</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">神秘公司受邀到罗马尼亚古堡捉鬼,却发现所谓的吸血鬼可能是史上最帅的摇滚明星。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">美国 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0016.html" data-filter-card data-search="球场艳侣 韩国 剧集 2024 爱情喜剧 体育 契约恋爱 欢喜冤家">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./16.jpg" alt="球场艳侣" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">球场艳侣</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">为了获得顶级网球俱乐部的免费康复治疗,过气男球星假装是菜鸟女教练的“小狼狗男友”,却发现她是劲敌的前女友。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">韩国 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0017.html" data-filter-card data-search="飞越绿林 澳大利亚 电影 2023 冒险/喜剧/家庭 丛林 鸟类迁徙 父女 环保 轻喜剧">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./17.jpg" alt="飞越绿林" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">喜剧家庭</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2023</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">飞越绿林</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">为了阻止开发商砍伐最后一片雨林,一对废柴父女伪装成珍稀鹦鹉,混入了观鸟大赛。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">澳大利亚 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0018.html" data-filter-card data-search="温德瑞拉日记 美国 剧集 2025 悬疑,奇幻 日记本 诅咒 家族秘密 穿越">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./18.jpg" alt="温德瑞拉日记" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2025</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">温德瑞拉日记</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">女孩在祖母遗物中发现一本日记,写下的事都会成真,但每实现一个愿望就会失去一段记忆。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">美国 · 剧集</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0019.html" data-filter-card data-search="网球优等生第一季 日本 动漫 2024 运动,竞技 网球 数据分析 学院">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./19.jpg" alt="网球优等生第一季" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">网球优等生第一季</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">戴着黑框眼镜的数学天才,用概率论和统计学,在网球场上打败了那些靠蛮力打球的体育特长生。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">日本 · 动漫</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0020.html" data-filter-card data-search="大红灯笼高高挂 中国 电影 2024 悬疑/心理/女性 复古惊悚 宅斗反转 超自然元素">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./20.jpg" alt="大红灯笼高高挂" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">日韩精选</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2024</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">大红灯笼高高挂</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">民国年间,新少奶奶发现陈府每挂起一盏红灯笼,就有一名丫鬟神秘消失。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0021.html" data-filter-card data-search="东方主战场 中国大陆 纪录片 2025 历史战争 二战 亚洲战场 彩色修复 亲历者">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./21.jpg" alt="东方主战场" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">动画纪实</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2025</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">东方主战场</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">首次大量使用各国解密档案和AI修复影像,全景呈现中国战场的全球战略价值。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国大陆 · 纪录片</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0022.html" data-filter-card data-search="逐爱天堂 英国 电影 2008 爱情,剧情,文艺 庄园 虐恋 复古 女性视角">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./22.jpg" alt="逐爱天堂" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">爱情奇幻</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2008</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">逐爱天堂</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">天真少女闯入神秘庄园,在奢华与禁锢中经历了一场如玫瑰般带刺的逐爱之旅。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">英国 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0023.html" data-filter-card data-search="山河故人 澳大利亚/中国大陆 电影 2015 剧情、家庭 贾樟柯 移民 时间 离别 三角恋">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./23.jpg" alt="山河故人" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">欧美影视</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2015</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">山河故人</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">从1999年到2025年,一个中国女人历经两段婚姻,最终在澳洲的海边听到了故乡的涛声。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">澳大利亚/中国大陆 · 电影</span>
+              </div>
+            </div>
+          </a>
+          <a class="group movie-card bg-slate-900 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300 hover:-translate-y-2" href="./movie-0024.html" data-filter-card data-search="中国轮盘 中国大陆,奥地利 电影 2027 悬疑,犯罪,黑色电影 多线叙事 命运博弈 火车站 昆汀式对白">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="./24.jpg" alt="中国轮盘" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 bg-yellow-500 text-black text-xs font-semibold rounded-full">国产电影</span>
+              <span class="absolute top-4 right-4 px-2 py-1 bg-black bg-opacity-70 text-white text-xs rounded">2027</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-1">中国轮盘</h3>
+              <p class="text-gray-400 text-sm mb-3 line-clamp-2">深夜火车站,六个陌生人被迫玩一场俄罗斯轮盘,但枪里装的不是子弹,而是彼此的秘密。</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span class="text-yellow-400">中国大陆,奥地利 · 电影</span>
+              </div>
+            </div>
+          </a>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-gradient-to-b from-slate-900 to-black text-gray-300 pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <span class="logo-mark small"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"></path></svg></span>
+            <span class="text-xl font-bold text-white">必看电影</span>
+          </div>
+          <p class="text-sm text-gray-400 mb-4">提供国产影视剧全集的免费观看，以及高清电影的在线播放服务。本站资源丰富，以国产内容为特色，涵盖剧集与电影，是影视爱好者的常用在线平台。</p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">影视分类</h3>
+          <ul class="space-y-2">
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-domestic-series.html">国产剧集</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-domestic-movies.html">国产电影</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-japan-korea.html">日韩精选</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-euro-america.html">欧美影视</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-action-suspense.html">动作悬疑</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-romance-fantasy.html">爱情奇幻</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-comedy-family.html">喜剧家庭</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./category-animation-documentary.html">动画纪实</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">热门入口</h3>
+          <ul class="space-y-2">
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./index.html">首页推荐</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./ranking.html">热门排行</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./search.html">影片搜索</a></li>
+            <li><a class="text-sm hover:text-yellow-400 transition-colors" href="./categories.html">分类片库</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">高清观看</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">聚合剧集、电影、动画与纪录内容，提供流畅的在线播放体验。</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+        <p>© 2026 必看电影 · 高清影视在线观看</p>
+      </div>
+    </div>
+  </footer>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/search-data.js"></script>
+  <script src="./assets/search.js"></script>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?60fa60a3da050a73eefefaaebe0afaf5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>
